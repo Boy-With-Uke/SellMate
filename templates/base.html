@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SellMate</title>
+</head>
+<body>
+<a href="{% url 'index' %}"><h1>La boutique one piece (Arc EggHead)</h1></a>
+
+
+{% if user.is_authenticated %}
+
+{{ user.username }}
+<a href="{% url 'logout' %}">Deconnexion</a>
+
+{% else %}
+<a href="{% url 'signup' %}">S'inscrire</a>
+<a href="{% url 'login' %}">Se connecter</a>
+{% endif %}
+
+
+{% block content %}
+
+
+{% endblock %}
+
+</body>
+</html>
