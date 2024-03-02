@@ -64,3 +64,25 @@ class Cart(models.Model):
 
         self.orders.clear()
         super().delete(*args, **kwargs)
+
+class Type(models.Model):
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return f"{self.name}"
+class Promotion(models.Model):
+    name = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128)
+    type = models.ForeignKey(Type, on_delete=models.CASCADE)
+    price_promo = models.FloatField(default=0.0)
+    price = models.FloatField(default=0.0)
+    description = models.TextField(blank=True)
+    thumbnail = models.ImageField(upload_to="promo", blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.price}) ({self.price_promo})"
+
+    def get_absolute_url(self):
+        return reverse("promo", kwargs={"slug": self.slug})
+
+

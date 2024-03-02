@@ -2,12 +2,21 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-from store.models import Product, Cart, Order
+from store.models import Product, Cart, Order, Promotion
 
 
 def index(request):
+    return render(request, 'store/index.html')
+
+def products(request):
     products = Product.objects.all
-    return render(request, 'store/index.html', context={"products": products})
+
+    pass
+
+
+def promotion(request):
+    promotions = Promotion.objects.all
+    return render(request, 'store/promotion.html', context={"promotions": promotions})
 
 
 def product_detail(request, slug):
