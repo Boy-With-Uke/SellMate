@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-from shop.settings import AUTH_USER_MODEL
+from SHOP.settings import AUTH_USER_MODEL
 
 """
 Product

@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path
 from store.views import index, product_detail, add_to_cart, cart, delete_cart
 from accounts.views import signup, logout_user, login_user
-from shop import settings
+from SHOP import settings
 
 urlpatterns = [
                   path('', index, name='index'),
