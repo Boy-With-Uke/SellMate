@@ -55,8 +55,9 @@
                                                 <div style="width: 160px;">
                                                     <h5 class="mb-0">{{ order.total }} Ar</h5>
                                                 </div>
-                                                <a href="#!" style="color: #cecece;"><i
-                                                        class="fas fa-trash-alt"></i></a>
+                                                <a href="{% url 'remove_from_cart' order.id %}" class="text-muted px-1">
+                                                    <i class="mdi mdi-trash-can-outline"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

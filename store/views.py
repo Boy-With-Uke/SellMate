@@ -68,6 +68,20 @@ def delete_cart(request):
         cart.delete()
     return render(request, 'store/cart.html')
 
+@login_required
+def remove_from_cart(request, order_id):
+    user = request.user
+    order = get_object_or_404(Order, id=order_id, user=user, ordered=False)
+    order.quantity -= 1
+    if order.quantity <= 0:
+        order.delete()
+    else:
+        order.save()
+    cart = user.cart
+    if not cart.orders.exists():
+        cart.delete()
+    return redirect('cart')
+
 def login_required_error(request):
     return render(request, 'store/login_required_error.html')
 def contact(request):
