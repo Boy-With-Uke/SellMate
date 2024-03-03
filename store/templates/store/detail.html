@@ -1,17 +1,51 @@
 {% extends 'base.html' %}
 
 {% block section %}
+<section class="py-5"><img class="img-fluid" src="{{ product.thumbnail.url }} "
+                           alt="image du produit {{ product.name }}" width="100%" height="600"
+                           style="margin-right: 0px;padding-right: 30px;padding-left: 30px;margin-left: 0px;margin-bottom: 59px;"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="margin-bottom: 50px;">
+                <h1 class="fw-bold d-xl-flex justify-content-xl-center">{{product.name}}</h1>
+                <p class="fw-bold text-success d-xl-flex justify-content-xl-center mb-2">{{ product.price }} Ar</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4 style="font-size: 17px;">Description:</h4>
+                <p class="text-muted">{{ product.description }}</p>
+            </div>
+            <div class="col-md-6 d-xl-flex justify-content-xl-center align-items-xl-start" data-bs-toggle="tooltip"
+                 style="margin-top: 0px;padding-top: 10px;padding-bottom: 10px;">
+                <ul class="list-unstyled text-center">
+                    <li>
+                        <span class="badge bg-info mb-2">{{ product.type }}</span>
 
-<h2>{{product.name}}</h2>
-<h3>${{ product.price }}</h3>
-<img src="{{ product.thumbnail.url }} " alt="image du produit {{ product.name }}"
-     style="max-width: 350px; max-height: 300px;">
-<p>{{ product.description }}</p>
-<p>{{ product.stock }} en stock</p>
+                        <span class="badge bg-warning mb-2" style="margin-left: 22px;">{{product.stock}} en stock</span>
+                    </li>
 
-{% if user.is_authenticated %}
-<p><a href="{% url 'add-to-cart' product.slug %}">
-    <button>Ajouter au panier</button>
-</a></p>
-{% endif %}
+
+                    <li>{% if user.is_authenticated %}
+                        <div class="ref-addons">
+                            <a class="ref-button preview-toggle" href="{% url 'add-to-cart' product.slug %}">Add
+                                to Cart</a>
+                        </div>
+                        {% else %}
+
+                        <div class="ref-addons">
+                            <p class="fw-bold text-success mb-2">You need tot get loged in to add to your cart</p>
+                        </div>
+
+                        {% endif %}
+                    </li>
+
+
+
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

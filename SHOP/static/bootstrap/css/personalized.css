@@ -1,0 +1,7 @@
+.product-photo {
+    background-color: var(--ref-gray-300);
+    width: 25%;
+    height: 90px;
+    margin-right: 1em;
+    margin-top: 5px;
+}

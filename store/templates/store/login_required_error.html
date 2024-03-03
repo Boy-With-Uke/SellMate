@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block section %}
+<section class="py-5">
+    <div class="container" style="height: 300px;">
+        <div class="row" style="margin-top: 200px;">
+            <div class="col-md-12" style="margin-bottom: 50px;">
+                <h1 class="fw-bold d-xl-flex justify-content-xl-center">You need tot get loged in to add to your cart </h1>
+                <a class="fw-bold text-success d-xl-flex justify-content-xl-center mb-2" href="{% url 'login' %}">Log in</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
