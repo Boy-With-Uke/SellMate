@@ -66,7 +66,7 @@ def cart(request):
 def delete_cart(request):
     if cart := request.user.cart:
         cart.delete()
-    return render(request, 'store/cart.html')
+    return render(request, 'store/empty_cart.html')
 
 @login_required
 def remove_from_cart(request, order_id):

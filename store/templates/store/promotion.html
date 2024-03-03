@@ -7,7 +7,7 @@
     <div class="container py-5">
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2 class="fw-bold">OUr actual Promotions</h2>
+                <h2 class="fw-bold">Our actual Promotions</h2>
                 <p class="text-muted">We give to our custommers the best offers from our suppliers.</p>
             </div>
         </div>
@@ -22,7 +22,7 @@
                         <span class="badge bg-danger mb-2"><strike>{{ promotion.price }}</strike> Ar</span>
                         <span class="badge bg-primary mb-2">{{ promotion.price_promo }} Ar</span>
                         <h4 class="fw-bold">{{ promotion.name }}</h4>
-                        <p class="text-muted">{{ promotion.description }}</p>
+                        <p class="text-muted">{{ promotion.description|truncatewords:15 }}</p>
                     </div>
                 </div>
             </div>
