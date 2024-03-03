@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block section %}
+
+
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row mb-4 mb-lg-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 class="fw-bold">Products</h2>
+                <p class="text-muted">
+                    No matter the project, our team can handle it.&nbsp;
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row mx-auto">
+            <div class="col">
+                <div
+                        data-reflow-type="product-list"
+                        data-reflow-layout="cards"
+                        data-reflow-order="date_desc"
+                        data-reflow-product-link="/product.html?product={id}">
+                    <div class="reflow-product-list ref-cards">
+                        <div class="ref-products">
+
+                            {% for product in products %}
+                            <div class="col mb-4">
+                                <div>
+                                    <a href="{{ product.get_absolute_url }}">
+                                        <img class="rounded img-fluid shadow w-100 fit-cover"
+                                             src="{{ product.thumbnail.url }}" style="height: 250px;">
+
+                                        <div class="py-4">
+                                            <span class="badge bg-info mb-2">{{ product.type }}</span>
+                                            <span class="badge bg-primary mb-2">{{ product.price }} Ar</span>
+                                            <h4 class="fw-bold">{{ product.name }}</h4>
+                                            <p class="text-muted">{{ product.description|truncatewords:20 }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+
+
+                                {% if user.is_authenticated %}
+                                <div class="ref-addons">
+                                    <a class="ref-button preview-toggle" href="{% url 'add-to-cart' product.slug %}">Add
+                                        to Cart</a>
+                                </div>
+                                {% else %}
+
+                                <div class="ref-addons">
+                                    <p class="fw-bold text-success mb-2">You need tot get loged in to add to your cart</p>
+                                </div>
+
+                                {% endif %}
+
+
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

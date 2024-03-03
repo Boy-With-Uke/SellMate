@@ -11,7 +11,7 @@ urlpatterns = [
                   path('', index, name='index'),
                   path('admin/', admin.site.urls),
                   path('promotion/', promotion, name='promotion'),
-                  path('products/', promotion, name='products'),
+                  path('products/', products, name='products'),
                   path('signup/', signup, name='signup'),
                   path('login/', login_user, name='login'),
                   path('logout/', logout_user, name='logout'),

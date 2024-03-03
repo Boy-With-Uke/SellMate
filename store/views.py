@@ -10,6 +10,7 @@ def index(request):
 
 def products(request):
     products = Product.objects.all
+    return render(request,'store/products.html', context={"products": products})
 
     pass
 
